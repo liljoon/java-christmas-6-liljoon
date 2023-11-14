@@ -30,6 +30,16 @@ public class Orders {
         return false;
     }
 
+    public Integer getWeekdaysDiscount() {
+        Integer dessertNumber = 0;
+        for (Order order : orders) {
+            if (order.isDessert()) {
+                dessertNumber++;
+            }
+        }
+        return dessertNumber * 2023;
+    }
+
     @Override
     public String toString() {
         StringBuilder allMenuString = new StringBuilder();

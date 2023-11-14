@@ -1,7 +1,13 @@
 package christmas.model;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+
 public class Date {
     private Integer date;
+
+    private final static Integer year = 2023;
+    private final static Integer month = 12;
 
     public Date(Integer date) {
         this.date = date;
@@ -20,6 +26,15 @@ public class Date {
     }
 
     // 평일 할인
+    public boolean isWeekdays() {
+        LocalDate localDate = LocalDate.of(year, month, date);
+
+        if (localDate.getDayOfWeek() != DayOfWeek.FRIDAY && localDate.getDayOfWeek() != DayOfWeek.SATURDAY) {
+            return true;
+        }
+        return false;
+    }
+
     // 주말 할인
     // 특별 할인
     // 계산

@@ -15,6 +15,20 @@ public class Order {
         return this.menu.getPrice() * this.number;
     }
 
+    boolean isDessert() {
+        if (menu.isDessert()) {
+            return true;
+        }
+        return false;
+    }
+
+    boolean isMainDish() {
+        if (menu.isMainDish()) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return String.format("%s %d개", menu.getName(), number);

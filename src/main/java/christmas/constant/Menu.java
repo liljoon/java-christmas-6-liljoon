@@ -52,4 +52,18 @@ public enum Menu {
         }
         throw new IllegalArgumentException();
     }
+
+    public boolean isDessert() {
+        if (category == Category.DESSERT) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isMainDish() {
+        if (category == Category.MAIN_DISH) {
+            return true;
+        }
+        return false;
+    }
 }
