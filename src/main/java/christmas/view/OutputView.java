@@ -2,7 +2,6 @@ package christmas.view;
 
 import christmas.model.Date;
 import christmas.model.Orders;
-import java.text.NumberFormat;
 
 public class OutputView {
     public void printWelcome() {
@@ -21,8 +20,7 @@ public class OutputView {
     public void printTotalPriceBeforeDiscount(Orders orders) {
         System.out.println("<할인 전 총주문 금액>");
         Integer price = orders.getTotalPrice();
-        String formattedPrice = NumberFormat.getInstance().format(price);
-        System.out.printf("%s원\n", formattedPrice);
+        System.out.printf("%,d원\n\n", price);
     }
 
     public void printGiftEvent(Orders orders) {
@@ -33,5 +31,26 @@ public class OutputView {
             return;
         }
         System.out.println("없음");
+    }
+
+    public void printDiscountContext(Orders orders, Date date) {
+        System.out.println("<혜택 내역>");
+        if (orders.getTotalPrice() < 10000) {
+            System.out.println("없음");
+            return;
+        }
+        System.out.printf("크리스마스 디데이 할인: -%,d원\n", date.getChristmasDDayDiscount());
+        if (date.isWeekdays()) {
+            System.out.printf("평일 할인: -%,d원\n", orders.getWeekdaysDiscount());
+        }
+        if (date.isWeekend()) {
+            System.out.printf("주말 할인: -%,d원\n", orders.getWeekendDiscount());
+        }
+        if (date.isSpecialDiscount()) {
+            System.out.printf("특별 할인: -%,d원\n", 1000);
+        }
+        if (orders.isGiftEvent()) {
+            System.out.printf("증정 이벤트: -%,d원\n", 25000);
+        }
     }
 }

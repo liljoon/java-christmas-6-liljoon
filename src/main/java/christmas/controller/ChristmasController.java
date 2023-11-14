@@ -24,5 +24,6 @@ public class ChristmasController {
         outputView.printOrder(orders);
         outputView.printTotalPriceBeforeDiscount(orders);
         outputView.printGiftEvent(orders);
+        outputView.printDiscountContext(orders, date);
     }
 }
