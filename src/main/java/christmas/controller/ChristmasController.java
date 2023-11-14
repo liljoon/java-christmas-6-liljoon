@@ -26,9 +26,23 @@ public class ChristmasController {
         outputView.printGiftEvent(orders);
         outputView.printDiscountContext(orders, date);
         outputView.printTotalDiscount(sumTotalDiscount());
+        outputView.printTotalPriceAfterDiscount(orders.getTotalPrice() - sumTotalDiscountExceptGift());
     }
 
     private Integer sumTotalDiscount() {
+        Integer sum = 0;
+
+        if (orders.getTotalPrice() < 10000) {
+            return 0;
+        }
+        sum += sumTotalDiscountExceptGift();
+        if (orders.isGiftEvent()) {
+            sum += 25000;
+        }
+        return sum;
+    }
+
+    private Integer sumTotalDiscountExceptGift() {
         Integer sum = 0;
 
         if (orders.getTotalPrice() < 10000) {
@@ -43,9 +57,6 @@ public class ChristmasController {
         }
         if (date.isSpecialDiscount()) {
             sum += 1000;
-        }
-        if (orders.isGiftEvent()) {
-            sum += 25000;
         }
         return sum;
     }
