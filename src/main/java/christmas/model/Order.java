@@ -15,18 +15,18 @@ public class Order {
         return this.menu.getPrice() * this.number;
     }
 
-    boolean isDessert() {
+    public Integer getDessertNumber() {
         if (menu.isDessert()) {
-            return true;
+            return number;
         }
-        return false;
+        return 0;
     }
 
-    boolean isMainDish() {
+    public Integer getMainDishNumber() {
         if (menu.isMainDish()) {
-            return true;
+            return number;
         }
-        return false;
+        return 0;
     }
 
     @Override

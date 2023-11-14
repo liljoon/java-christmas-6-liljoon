@@ -33,19 +33,15 @@ public class Orders {
     public Integer getWeekdaysDiscount() {
         Integer dessertNumber = 0;
         for (Order order : orders) {
-            if (order.isDessert()) {
-                dessertNumber++;
-            }
+            dessertNumber += order.getDessertNumber();
         }
         return dessertNumber * 2023;
     }
-    
+
     public Integer getWeekendDiscount() {
         Integer mainDishNumber = 0;
         for (Order order : orders) {
-            if (order.isMainDish()) {
-                mainDishNumber++;
-            }
+            mainDishNumber += order.getMainDishNumber();
         }
         return mainDishNumber * 2023;
     }
