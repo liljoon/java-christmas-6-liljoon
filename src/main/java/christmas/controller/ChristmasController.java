@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.constant.Badge;
 import christmas.model.Date;
 import christmas.model.Orders;
 import christmas.view.InputView;
@@ -27,6 +28,7 @@ public class ChristmasController {
         outputView.printDiscountContext(orders, date);
         outputView.printTotalDiscount(sumTotalDiscount());
         outputView.printTotalPriceAfterDiscount(orders.getTotalPrice() - sumTotalDiscountExceptGift());
+        outputView.printEventBadge(Badge.getBadgeNameByDiscountPrice(sumTotalDiscount()));
     }
 
     private Integer sumTotalDiscount() {

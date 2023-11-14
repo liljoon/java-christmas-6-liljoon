@@ -57,11 +57,16 @@ public class OutputView {
 
     public void printTotalDiscount(Integer price) {
         System.out.println("<총혜택 금액>");
-        System.out.printf("-%,d원\n\n", price);
+        System.out.printf("%,d원\n\n", -price);
     }
 
     public void printTotalPriceAfterDiscount(Integer price) {
         System.out.println("<할인 후 예상 결제 금액>");
         System.out.printf("%,d원\n\n", price);
+    }
+
+    public void printEventBadge(String badgeName) {
+        System.out.println("<12월 이벤트 배지>");
+        System.out.printf(badgeName);
     }
 }
