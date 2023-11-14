@@ -28,6 +28,7 @@ public class InputView {
         String ordersString;
         String[] splitedOrderString;
         List<Order> orders = new ArrayList<>();
+        List<String> menuNames = new ArrayList<>();
 
         System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
         ordersString = Console.readLine();
@@ -35,7 +36,17 @@ public class InputView {
 
         Arrays.stream(splitedOrderString).forEach((orderString) -> {
             String[] nameAndNumber = orderString.split("-");
-            orders.add(new Order(Menu.getMenuByName(nameAndNumber[0]), Integer.parseInt(nameAndNumber[1])));
+            Menu menu = Menu.getMenuByName(nameAndNumber[0]);
+            Integer number = Integer.parseInt(nameAndNumber[1]);
+            menuNames.add(menu.getName());
+            if (number < 1) {
+                throw new IllegalArgumentException();
+            }
+            // 중복 처리
+            if (menuNames.stream().distinct().count() != menuNames.size()) {
+                throw new IllegalArgumentException();
+            }
+            orders.add(new Order(menu, number));
         });
 
         return new Orders(orders);
