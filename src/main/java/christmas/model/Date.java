@@ -3,6 +3,10 @@ package christmas.model;
 public class Date {
     Integer date;
 
+    public Date(Integer date) {
+        this.date = date;
+    }
+
     // 크리스마스 디데이 할인
     // 평일 할인
     // 주말 할인
