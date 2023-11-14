@@ -39,6 +39,16 @@ public class Orders {
         }
         return dessertNumber * 2023;
     }
+    
+    public Integer getWeekendDiscount() {
+        Integer mainDishNumber = 0;
+        for (Order order : orders) {
+            if (order.isMainDish()) {
+                mainDishNumber++;
+            }
+        }
+        return mainDishNumber * 2023;
+    }
 
     @Override
     public String toString() {

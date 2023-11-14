@@ -36,6 +36,10 @@ public class Date {
     }
 
     // 주말 할인
+    public boolean isWeekend() {
+        return !isWeekdays();
+    }
+
     // 특별 할인
     // 계산
 }
