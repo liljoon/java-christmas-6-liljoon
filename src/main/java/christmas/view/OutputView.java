@@ -27,16 +27,16 @@ public class OutputView {
         System.out.println("<증정 메뉴>");
 
         if (orders.isGiftEvent()) {
-            System.out.println("샴페인 1개");
+            System.out.println("샴페인 1개\n");
             return;
         }
-        System.out.println("없음");
+        System.out.println("없음\n");
     }
 
     public void printDiscountContext(Orders orders, Date date) {
         System.out.println("<혜택 내역>");
         if (orders.getTotalPrice() < 10000) {
-            System.out.println("없음");
+            System.out.println("없음\n");
             return;
         }
         System.out.printf("크리스마스 디데이 할인: -%,d원\n", date.getChristmasDDayDiscount());
@@ -52,5 +52,11 @@ public class OutputView {
         if (orders.isGiftEvent()) {
             System.out.printf("증정 이벤트: -%,d원\n", 25000);
         }
+        System.out.println();
+    }
+
+    public void printTotalDiscount(Integer price) {
+        System.out.println("<총혜택 금액>");
+        System.out.printf("-%,d원\n\n", price);
     }
 }
