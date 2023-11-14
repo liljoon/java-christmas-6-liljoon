@@ -24,4 +24,14 @@ public class OutputView {
         String formattedPrice = NumberFormat.getInstance().format(price);
         System.out.printf("%s원\n", formattedPrice);
     }
+
+    public void printGiftEvent(Orders orders) {
+        System.out.println("<증정 메뉴>");
+
+        if (orders.isGiftEvent()) {
+            System.out.println("샴페인 1개");
+            return;
+        }
+        System.out.println("없음");
+    }
 }

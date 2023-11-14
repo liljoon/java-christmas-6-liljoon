@@ -9,6 +9,7 @@ public class Orders {
         this.orders = orders;
     }
 
+    // 할인 전 금액
     public Integer getTotalPrice() {
         Integer sumOfPrice = 0;
 
@@ -17,6 +18,16 @@ public class Orders {
         }
 
         return sumOfPrice;
+    }
+
+    // 증정 이벤트
+    public boolean isGiftEvent() {
+        Integer totalPrice = getTotalPrice();
+
+        if (totalPrice >= 120000) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -29,8 +40,6 @@ public class Orders {
         return allMenuString.toString();
     }
 
-    // 할인 전 금액
-    // 증정 이벤트
     // 배지 부여
     // 할인 금액
     // 할인 후 금액
