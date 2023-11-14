@@ -41,5 +41,16 @@ public class Date {
     }
 
     // 특별 할인
+    public boolean isSpecialDiscount() {
+        if (date == 25) {
+            return true;
+        }
+        LocalDate localDate = LocalDate.of(year, month, date);
+        if (localDate.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            return true;
+        }
+
+        return false;
+    }
     // 계산
 }
