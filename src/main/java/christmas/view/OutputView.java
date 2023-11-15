@@ -1,9 +1,13 @@
 package christmas.view;
 
+import christmas.constant.Menu;
 import christmas.model.Date;
 import christmas.model.Orders;
 
 public class OutputView {
+    private final static int priceAtLeastForEvent = 10000;
+    private final static int priceOfSpecialDiscount = 1000;
+
     public void printWelcome() {
         System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
     }
@@ -35,7 +39,7 @@ public class OutputView {
 
     public void printDiscountContext(Orders orders, Date date) {
         System.out.println("<혜택 내역>");
-        if (orders.getTotalPrice() < 10000) {
+        if (orders.getTotalPrice() < priceAtLeastForEvent) {
             System.out.println("없음\n");
             return;
         }
@@ -49,10 +53,10 @@ public class OutputView {
             System.out.printf("주말 할인: -%,d원\n", orders.getWeekendDiscount());
         }
         if (date.isSpecialDiscount()) {
-            System.out.printf("특별 할인: -%,d원\n", 1000);
+            System.out.printf("특별 할인: -%,d원\n", priceOfSpecialDiscount);
         }
         if (orders.isGiftEvent()) {
-            System.out.printf("증정 이벤트: -%,d원\n", 25000);
+            System.out.printf("증정 이벤트: -%,d원\n", Menu.CHAMPAGNE.getPrice());
         }
         System.out.println();
     }

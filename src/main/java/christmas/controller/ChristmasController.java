@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.constant.Badge;
+import christmas.constant.Menu;
 import christmas.model.Date;
 import christmas.model.Orders;
 import christmas.view.InputView;
@@ -11,6 +12,10 @@ public class ChristmasController {
     private InputView inputView;
     private Date date;
     private Orders orders;
+
+    private final static int priceAtLeastForEvent = 10000;
+    private final static int priceOfSpecialDiscount = 1000;
+
 
     public ChristmasController() {
         this.outputView = new OutputView();
@@ -34,19 +39,19 @@ public class ChristmasController {
     private Integer sumTotalDiscount() {
         Integer sum = 0;
 
-        if (orders.getTotalPrice() < 10000) {
+        if (orders.getTotalPrice() < priceAtLeastForEvent) {
             return 0;
         }
         sum += sumTotalDiscountExceptGift();
         if (orders.isGiftEvent()) {
-            sum += 25000;
+            sum += Menu.CHAMPAGNE.getPrice();
         }
         return sum;
     }
 
     private Integer sumTotalDiscountExceptGift() {
         Integer sum = 0;
-        if (orders.getTotalPrice() < 10000) {
+        if (orders.getTotalPrice() < priceAtLeastForEvent) {
             return 0;
         }
         sum += date.getChristmasDDayDiscount();
@@ -57,7 +62,7 @@ public class ChristmasController {
             sum += orders.getWeekendDiscount();
         }
         if (date.isSpecialDiscount()) {
-            sum += 1000;
+            sum += priceOfSpecialDiscount;
         }
         return sum;
     }

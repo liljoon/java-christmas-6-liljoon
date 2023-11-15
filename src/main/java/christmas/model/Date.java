@@ -8,6 +8,7 @@ public class Date {
 
     private final static Integer year = 2023;
     private final static Integer month = 12;
+    private final static int christmasDay = 25;
 
     public Date(Integer date) {
         this.date = date;
@@ -26,7 +27,7 @@ public class Date {
 
     // 크리스마스 디데이 할인
     public Integer getChristmasDDayDiscount() {
-        if (date > 25) {
+        if (date > christmasDay) {
             return 0;
         }
         return 1000 + (date - 1) * 100;
@@ -49,7 +50,7 @@ public class Date {
 
     // 특별 할인
     public boolean isSpecialDiscount() {
-        if (date == 25) {
+        if (date == christmasDay) {
             return true;
         }
         LocalDate localDate = LocalDate.of(year, month, date);

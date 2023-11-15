@@ -6,6 +6,10 @@ import java.util.List;
 public class Orders {
     private List<Order> orders;
 
+    private final static int maxOfOrderNumber = 20;
+    private final static int giftEventCutLine = 120000;
+    private final static int discountPrice = 2023;
+
     public Orders(List<Order> orders) {
         this.orders = orders;
         validate();
@@ -15,7 +19,7 @@ public class Orders {
         if (isDuplicated()) {
             throw new IllegalArgumentException();
         }
-        if (isOver20()) {
+        if (isOverMax()) {
             throw new IllegalArgumentException();
         }
         if (isOnlyDrink()) {
@@ -24,24 +28,24 @@ public class Orders {
     }
 
     private boolean isDuplicated() {
-        List<String> orderMenunames = new ArrayList<>();
+        List<String> orderMenuNames = new ArrayList<>();
 
         orders.forEach(order -> {
-            orderMenunames.add(order.getMenu().getName());
+            orderMenuNames.add(order.getMenu().getName());
         });
-        if (orderMenunames.stream().distinct().count() != orderMenunames.size()) {
+        if (orderMenuNames.stream().distinct().count() != orderMenuNames.size()) {
             return true;
         }
         return false;
     }
 
-    private boolean isOver20() {
+    private boolean isOverMax() {
         Integer count = 0;
 
         for (Order order : orders) {
             count += order.getNumber();
         }
-        if (count > 20) {
+        if (count > maxOfOrderNumber) {
             return true;
         }
         return false;
@@ -71,7 +75,7 @@ public class Orders {
     public boolean isGiftEvent() {
         Integer totalPrice = getTotalPrice();
 
-        if (totalPrice >= 120000) {
+        if (totalPrice >= giftEventCutLine) {
             return true;
         }
         return false;
@@ -82,7 +86,7 @@ public class Orders {
         for (Order order : orders) {
             dessertNumber += order.getDessertNumber();
         }
-        return dessertNumber * 2023;
+        return dessertNumber * discountPrice;
     }
 
     public Integer getWeekendDiscount() {
@@ -90,7 +94,7 @@ public class Orders {
         for (Order order : orders) {
             mainDishNumber += order.getMainDishNumber();
         }
-        return mainDishNumber * 2023;
+        return mainDishNumber * discountPrice;
     }
 
     @Override
