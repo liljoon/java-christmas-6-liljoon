@@ -14,14 +14,17 @@ public class InputView {
         Integer date;
 
         System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
-        String input = Console.readLine();
-        date = Integer.parseInt(input);
 
-        if (date < 1 || date > 31) {
-            throw new IllegalArgumentException();
+        while (true) {
+            try {
+                String input = Console.readLine();
+                date = Integer.parseInt(input);
+
+                return new Date(date);
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            }
         }
-
-        return new Date(date);
     }
 
     public Orders readOrders() {

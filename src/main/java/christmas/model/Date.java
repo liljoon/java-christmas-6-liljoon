@@ -11,6 +11,13 @@ public class Date {
 
     public Date(Integer date) {
         this.date = date;
+        validate();
+    }
+
+    private void validate() {
+        if (date < 1 || date > 31) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public Integer getDate() {
