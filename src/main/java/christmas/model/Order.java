@@ -11,6 +11,22 @@ public class Order {
         this.number = number;
     }
 
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public Order(String menuName, Integer number) {
+        this.menu = Menu.getMenuByName(menuName);
+        this.number = number;
+        if (this.number < 1) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public Integer getPrice() {
         return this.menu.getPrice() * this.number;
     }

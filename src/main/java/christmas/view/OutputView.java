@@ -40,10 +40,10 @@ public class OutputView {
             return;
         }
         System.out.printf("크리스마스 디데이 할인: -%,d원\n", date.getChristmasDDayDiscount());
-        if (date.isWeekdays()) {
+        if (date.isWeekdays() && orders.getWeekdaysDiscount() != 0) {
             System.out.printf("평일 할인: -%,d원\n", orders.getWeekdaysDiscount());
         }
-        if (date.isWeekend()) {
+        if (date.isWeekend() && orders.getWeekendDiscount() != 0) {
             System.out.printf("주말 할인: -%,d원\n", orders.getWeekendDiscount());
         }
         if (date.isSpecialDiscount()) {
