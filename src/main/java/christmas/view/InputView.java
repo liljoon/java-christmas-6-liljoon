@@ -35,7 +35,7 @@ public class InputView {
             try {
                 ordersString = Console.readLine();
                 return new Orders(parseOrders(ordersString));
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
                 System.out.println("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
             }
         }
