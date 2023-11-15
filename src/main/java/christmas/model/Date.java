@@ -26,8 +26,8 @@ public class Date {
 
     // 크리스마스 디데이 할인
     public Integer getChristmasDDayDiscount() {
-        if (date >= 25) {
-            return 3400;
+        if (date > 25) {
+            return 0;
         }
         return 1000 + (date - 1) * 100;
     }

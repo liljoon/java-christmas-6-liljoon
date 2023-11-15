@@ -39,7 +39,9 @@ public class OutputView {
             System.out.println("없음\n");
             return;
         }
-        System.out.printf("크리스마스 디데이 할인: -%,d원\n", date.getChristmasDDayDiscount());
+        if (date.getChristmasDDayDiscount() != 0) {
+            System.out.printf("크리스마스 디데이 할인: -%,d원\n", date.getChristmasDDayDiscount());
+        }
         if (date.isWeekdays() && orders.getWeekdaysDiscount() != 0) {
             System.out.printf("평일 할인: -%,d원\n", orders.getWeekdaysDiscount());
         }
