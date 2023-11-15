@@ -46,7 +46,6 @@ public class ChristmasController {
 
     private Integer sumTotalDiscountExceptGift() {
         Integer sum = 0;
-
         if (orders.getTotalPrice() < 10000) {
             return 0;
         }
