@@ -143,7 +143,7 @@ public class OutputViewTest {
 
         @Override
         protected void runMain() {
-            outputView.printDiscountContext(inputView.readOrders(), inputView.readDate());
+            outputView.printDiscountContext(inputView.readOrders(), inputView.readDate(), 31246);
         }
     }
 }

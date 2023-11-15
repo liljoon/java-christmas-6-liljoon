@@ -30,7 +30,7 @@ public class ChristmasController {
         outputView.printOrder(orders);
         outputView.printTotalPriceBeforeDiscount(orders);
         outputView.printGiftEvent(orders);
-        outputView.printDiscountContext(orders, date);
+        outputView.printDiscountContext(orders, date, sumTotalDiscount());
         outputView.printTotalDiscount(sumTotalDiscount());
         outputView.printTotalPriceAfterDiscount(orders.getTotalPrice() - sumTotalDiscountExceptGift());
         outputView.printEventBadge(Badge.getBadgeNameByDiscountPrice(sumTotalDiscount()));

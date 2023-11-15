@@ -37,9 +37,9 @@ public class OutputView {
         System.out.println("없음\n");
     }
 
-    public void printDiscountContext(Orders orders, Date date) {
+    public void printDiscountContext(Orders orders, Date date, Integer totalDiscount) {
         System.out.println("<혜택 내역>");
-        if (orders.getTotalPrice() < priceAtLeastForEvent) {
+        if (orders.getTotalPrice() < priceAtLeastForEvent || totalDiscount == 0) {
             System.out.println("없음\n");
             return;
         }
