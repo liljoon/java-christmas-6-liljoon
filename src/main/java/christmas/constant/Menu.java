@@ -14,7 +14,7 @@ public enum Menu {
 
     T_BONE_STEAK("티본스테이크", 55000, Category.MAIN_DISH),
     BARBECUE_RIBS("바비큐립", 54000, Category.MAIN_DISH),
-    SEAFODD_PASTA("해산물파스타", 35000, Category.MAIN_DISH),
+    SEAFOOD_PASTA("해산물파스타", 35000, Category.MAIN_DISH),
     CHRISTMAS_PASTA("크리스마스파스타", 25000, Category.MAIN_DISH),
     ;
 
