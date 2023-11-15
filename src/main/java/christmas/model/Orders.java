@@ -18,6 +18,9 @@ public class Orders {
         if (isOver20()) {
             throw new IllegalArgumentException();
         }
+        if (isOnlyDrink()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private boolean isDuplicated() {
@@ -42,6 +45,15 @@ public class Orders {
             return true;
         }
         return false;
+    }
+
+    private boolean isOnlyDrink() {
+        for (Order order : orders) {
+            if (!order.getMenu().isDrink()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     // 할인 전 금액

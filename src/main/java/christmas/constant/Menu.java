@@ -66,4 +66,11 @@ public enum Menu {
         }
         return false;
     }
+
+    public boolean isDrink() {
+        if (category == Category.DRINK) {
+            return true;
+        }
+        return false;
+    }
 }
