@@ -1,7 +1,6 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.constant.Menu;
 import christmas.model.Date;
 import christmas.model.Order;
 import christmas.model.Orders;
