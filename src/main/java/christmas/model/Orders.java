@@ -1,5 +1,6 @@
 package christmas.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Orders {
@@ -7,6 +8,40 @@ public class Orders {
 
     public Orders(List<Order> orders) {
         this.orders = orders;
+        validate();
+    }
+
+    private void validate() {
+        if (isDuplicated()) {
+            throw new IllegalArgumentException();
+        }
+        if (isOver20()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean isDuplicated() {
+        List<String> orderMenunames = new ArrayList<>();
+
+        orders.forEach(order -> {
+            orderMenunames.add(order.getMenu().getName());
+        });
+        if (orderMenunames.stream().distinct().count() != orderMenunames.size()) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isOver20() {
+        Integer count = 0;
+
+        for (Order order : orders) {
+            count += order.getNumber();
+        }
+        if (count > 20) {
+            return true;
+        }
+        return false;
     }
 
     // 할인 전 금액
@@ -55,8 +90,4 @@ public class Orders {
         }
         return allMenuString.toString();
     }
-
-    // 배지 부여
-    // 할인 금액
-    // 할인 후 금액
 }
