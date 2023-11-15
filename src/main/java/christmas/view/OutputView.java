@@ -43,6 +43,11 @@ public class OutputView {
             System.out.println("없음\n");
             return;
         }
+        printDiscountContextDetail(orders, date);
+        System.out.println();
+    }
+
+    private void printDiscountContextDetail(Orders orders, Date date) {
         if (date.getChristmasDDayDiscount() != 0) {
             System.out.printf("크리스마스 디데이 할인: -%,d원\n", date.getChristmasDDayDiscount());
         }
@@ -58,7 +63,6 @@ public class OutputView {
         if (orders.isGiftEvent()) {
             System.out.printf("증정 이벤트: -%,d원\n", Menu.CHAMPAGNE.getPrice());
         }
-        System.out.println();
     }
 
     public void printTotalDiscount(Integer price) {
