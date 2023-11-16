@@ -1,0 +1,55 @@
+package christmas.view;
+
+import camp.nextstep.edu.missionutils.Console;
+import christmas.model.Date;
+import christmas.model.Order;
+import christmas.model.Orders;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class InputView {
+    public Date readDate() {
+        Integer date;
+
+        System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
+
+        while (true) {
+            try {
+                String input = Console.readLine();
+                date = Integer.parseInt(input);
+
+                return new Date(date);
+            } catch (IllegalArgumentException e) {
+                System.out.println("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            }
+        }
+    }
+
+    public Orders readOrders() {
+        String ordersString;
+
+        System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
+        while (true) {
+            try {
+                ordersString = Console.readLine();
+                return new Orders(parseOrders(ordersString));
+            } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
+                System.out.println("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            }
+        }
+    }
+
+    private List<Order> parseOrders(String ordersString) {
+        String[] splitedOrderString;
+        List<Order> orders = new ArrayList<>();
+
+        splitedOrderString = ordersString.split(",");
+        Arrays.stream(splitedOrderString).forEach((orderString) -> {
+            String[] nameAndNumber = orderString.split("-");
+            Integer number = Integer.parseInt(nameAndNumber[1]);
+            orders.add(new Order(nameAndNumber[0], number));
+        });
+        return orders;
+    }
+}
